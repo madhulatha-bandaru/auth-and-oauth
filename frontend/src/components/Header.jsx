@@ -12,17 +12,21 @@ const Header = () => {
         </Link>
         <ul className='flex gap-4'>
           <Link to='/'>
-          <li>Home</li>
+          <li className='hover:text-red-700'>Home</li>
           </Link>
           <Link to='/about'>
-          <li>About</li>
+          <li className='hover:text-red-700'>About</li>
           </Link>
           <Link to='/profile'>
             { currentUser ? (
               <img src={currentUser.profilePicture}
               alt = 'profile' className = 'h-7 w-7 rounded-full object-cover ' />
             ) : (
-              <li>Sign In</li>
+              <li>
+                <button onClick={() => navigate('/sign-in')}className=' px-3 py-0.3 bg-red-700 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-red-600 transition-all duration-300'>
+          Sign In
+        </button>
+              </li>
             )}
           
           </Link>
