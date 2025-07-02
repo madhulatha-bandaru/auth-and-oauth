@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import {useRef} from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import {app} from '../firebase'
@@ -17,11 +16,6 @@ import {
 
 const Profile = () => {
   const dispatch = useDispatch()
-  const fileRef = useRef(null);
-  const [image, setImage] = useState(undefined)
-
-  const [imagePercent, setImagePercent] = useState(0);
-  const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
 
@@ -87,12 +81,9 @@ const Profile = () => {
 
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
 
-        <input type='file' ref={fileRef} hidden accept='image/*' 
-        onChange={(e) => setImage(e.target.files[0])}/>
-
         <img src ={formData.profilePicture || currentUser.profilePicture} alt='profile'
         className='h-24 w-24 self-center cursor-pointer rounded-full object-cover mt-2'
-        onClick={() => fileRef.current.click()}/>
+        />
 
         <input defaultValue = { currentUser.username} type="text" id='username' placeholder='Username' 
         className='bg-slate-100 rounded-lg p-3' onChange={handleChange}/>
